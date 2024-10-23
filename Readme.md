@@ -59,12 +59,12 @@ QueryStatus=QueryStatus(ProgressPercentage=100.0, CumulativeBytesScanned=84, Cum
 
 ## Note
 
-Plugin addition to `pom.xml` (*for executable, fat jar*)
+Plugin addition to `pom.xml` (*for executable, fat jar*) <br />
+`maven-assembly-plugin`
 
 ## Notes from the reading section
 * AWS timestream uses a cellular architecture
 * Memory storage does fast reads/writes while magnetic stores the data fro longer periods of time based on time 
 * Customer partition keys is how users can firther divide the data
 * For security, it is important to use IAM permissions, and user groups to only allow the user to use the recourses they need 
-`maven-assembly-plugin`
-# awsTimestream
+
