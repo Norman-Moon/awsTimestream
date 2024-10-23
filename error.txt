@@ -1,0 +1,75 @@
+15:10:36.147 [main] DEBUG software.amazon.awssdk.core.internal.http.loader.ClasspathSdkHttpServiceProvider - The HTTP implementation loaded is software.amazon.awssdk.http.apache.ApacheSdkHttpService@76505305
+15:10:36.327 [main] DEBUG software.amazon.awssdk.auth.credentials.AwsCredentialsProviderChain - Unable to load credentials from SystemPropertyCredentialsProvider(): Unable to load credentials from system settings. Access key must be specified either via environment variable (AWS_ACCESS_KEY_ID) or system property (aws.accessKeyId).
+software.amazon.awssdk.core.exception.SdkClientException: Unable to load credentials from system settings. Access key must be specified either via environment variable (AWS_ACCESS_KEY_ID) or system property (aws.accessKeyId).
+        at software.amazon.awssdk.core.exception.SdkClientException$BuilderImpl.build(SdkClientException.java:111)
+        at software.amazon.awssdk.auth.credentials.internal.SystemSettingsCredentialsProvider.resolveCredentials(SystemSettingsCredentialsProvider.java:60)
+        at software.amazon.awssdk.auth.credentials.AwsCredentialsProvider.resolveIdentity(AwsCredentialsProvider.java:54)
+        at software.amazon.awssdk.identity.spi.IdentityProvider.resolveIdentity(IdentityProvider.java:60)
+        at software.amazon.awssdk.auth.credentials.AwsCredentialsProviderChain.resolveCredentials(AwsCredentialsProviderChain.java:109)
+        at software.amazon.awssdk.auth.credentials.internal.LazyAwsCredentialsProvider.resolveCredentials(LazyAwsCredentialsProvider.java:45)
+        at software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider.resolveCredentials(DefaultCredentialsProvider.java:129)
+        at software.amazon.awssdk.auth.credentials.AwsCredentialsProvider.resolveIdentity(AwsCredentialsProvider.java:54)
+        at software.amazon.awssdk.identity.spi.IdentityProvider.resolveIdentity(IdentityProvider.java:60)
+        at software.amazon.awssdk.services.timestreamquery.DefaultTimestreamQueryClient.query(DefaultTimestreamQueryClient.java:1064)
+        at com.aboutobjects.App.main(App.java:40)
+15:10:36.330 [main] DEBUG software.amazon.awssdk.auth.credentials.AwsCredentialsProviderChain - Loading credentials from EnvironmentVariableCredentialsProvider()
+15:10:36.341 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.core.interceptor.ExecutionInterceptorChain - Creating an interceptor chain that will apply interceptors in the following order: [software.amazon.awssdk.core.internal.interceptor.HttpChecksumValidationInterceptor@6e6d58cc, software.amazon.awssdk.awscore.interceptor.HelpfulUnknownHostExceptionInterceptor@643bc8a1, software.amazon.awssdk.awscore.eventstream.EventStreamInitialRequestInterceptor@5394af7d, software.amazon.awssdk.awscore.interceptor.TraceIdExecutionInterceptor@81b23c7, software.amazon.awssdk.services.timestreamquery.auth.scheme.internal.TimestreamQueryAuthSchemeInterceptor@c34b130, software.amazon.awssdk.services.timestreamquery.endpoints.internal.TimestreamQueryResolveEndpointInterceptor@36701ed7, software.amazon.awssdk.services.timestreamquery.endpoints.internal.TimestreamQueryRequestSetEndpointInterceptor@40e9a023]
+15:10:36.362 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.core.interceptor.ExecutionInterceptorChain - Interceptor 'software.amazon.awssdk.services.timestreamquery.endpoints.internal.TimestreamQueryRequestSetEndpointInterceptor@40e9a023' modified the message with its modifyHttpRequest method.
+15:10:36.382 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.retries.LegacyRetryStrategy - Request attempt 1 token acquired (backoff: 0ms, cost: 0, capacity: 500/500)
+15:10:36.385 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.request - Sending Request: DefaultSdkHttpFullRequest(httpMethod=POST, protocol=https, host=query.timestream.us-east-1.amazonaws.com, encodedPath=/, headers=[amz-sdk-invocation-id, Content-Length, Content-Type, User-Agent, X-Amz-Target], queryParameters=[])
+15:10:36.386 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.core.internal.http.pipeline.stages.SigningStage - Using SelectedAuthScheme: aws.auth#sigv4
+15:10:36.394 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.core.internal.io.SdkLengthAwareInputStream - Specified InputStream length of 2 has been reached. Returning EOF.
+15:10:36.397 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 Canonical Request: POST
+/
+
+amz-sdk-invocation-id:9f17420c-e9ca-0881-1504-bcfd57791b47
+amz-sdk-request:attempt=1; max=4
+content-length:2
+content-type:application/x-amz-json-1.0
+host:query.timestream.us-east-1.amazonaws.com
+x-amz-content-sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+x-amz-date:20241022T191036Z
+x-amz-target:Timestream_20181101.DescribeEndpoints
+
+amz-sdk-invocation-id;amz-sdk-request;content-length;content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target
+44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+15:10:36.397 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 Canonical Request Hash: e78cefd45878e187d9002ccc7c75cf5e4e19e8d862ebc8fc8a1b6ec720711d78
+15:10:36.397 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 String to sign: AWS4-HMAC-SHA256
+20241022T191036Z
+20241022/us-east-1/timestream/aws4_request
+e78cefd45878e187d9002ccc7c75cf5e4e19e8d862ebc8fc8a1b6ec720711d78
+15:10:36.531 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.http.apache.internal.conn.SdkTlsSocketFactory - socket.getSupportedProtocols(): [TLSv1.3, TLSv1.2, TLSv1.1, TLSv1, SSLv3, SSLv2Hello], socket.getEnabledProtocols(): [TLSv1.3, TLSv1.2]
+15:10:36.591 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.http.apache.internal.net.SdkSslSocket - created: query.timestream.us-east-1.amazonaws.com/54.144.176.8:443
+15:10:36.657 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.requestId - Received successful response: 200, Request ID: 86e9b639-d775-41db-b2d5-f43ac0717db2, Extended Request ID: not available
+15:10:36.657 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.request - Received successful response: 200, Request ID: 86e9b639-d775-41db-b2d5-f43ac0717db2, Extended Request ID: not available
+15:10:36.670 [ForkJoinPool.commonPool-worker-1] DEBUG software.amazon.awssdk.retries.LegacyRetryStrategy - Request attempt 1 succeeded (cost: -1, capacity: 500/500)
+15:10:36.676 [main] DEBUG software.amazon.awssdk.core.interceptor.ExecutionInterceptorChain - Creating an interceptor chain that will apply interceptors in the following order: [software.amazon.awssdk.core.internal.interceptor.HttpChecksumValidationInterceptor@6e6d58cc, software.amazon.awssdk.awscore.interceptor.HelpfulUnknownHostExceptionInterceptor@643bc8a1, software.amazon.awssdk.awscore.eventstream.EventStreamInitialRequestInterceptor@5394af7d, software.amazon.awssdk.awscore.interceptor.TraceIdExecutionInterceptor@81b23c7, software.amazon.awssdk.services.timestreamquery.auth.scheme.internal.TimestreamQueryAuthSchemeInterceptor@c34b130, software.amazon.awssdk.services.timestreamquery.endpoints.internal.TimestreamQueryResolveEndpointInterceptor@36701ed7, software.amazon.awssdk.services.timestreamquery.endpoints.internal.TimestreamQueryRequestSetEndpointInterceptor@40e9a023]
+15:10:36.677 [main] DEBUG software.amazon.awssdk.retries.LegacyRetryStrategy - Request attempt 1 token acquired (backoff: 0ms, cost: 0, capacity: 500/500)
+15:10:36.677 [main] DEBUG software.amazon.awssdk.request - Sending Request: DefaultSdkHttpFullRequest(httpMethod=POST, protocol=https, host=query-cell2.timestream.us-east-1.amazonaws.com, encodedPath=/, headers=[amz-sdk-invocation-id, Content-Length, Content-Type, User-Agent, X-Amz-Target], queryParameters=[])
+15:10:36.677 [main] DEBUG software.amazon.awssdk.core.internal.http.pipeline.stages.SigningStage - Using SelectedAuthScheme: aws.auth#sigv4
+15:10:36.678 [main] DEBUG software.amazon.awssdk.core.internal.io.SdkLengthAwareInputStream - Specified InputStream length of 116 has been reached. Returning EOF.
+15:10:36.678 [main] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 Canonical Request: POST
+/
+
+amz-sdk-invocation-id:faa5e1ef-a0ca-41b0-311d-f893da6d2dd8
+amz-sdk-request:attempt=1; max=4
+content-length:116
+content-type:application/x-amz-json-1.0
+host:query-cell2.timestream.us-east-1.amazonaws.com
+x-amz-content-sha256:4174ae5a6684013ccd7fbc82ec646cc008c782db3a65bee2aaebea24dca4a892
+x-amz-date:20241022T191036Z
+x-amz-target:Timestream_20181101.Query
+
+amz-sdk-invocation-id;amz-sdk-request;content-length;content-type;host;x-amz-content-sha256;x-amz-date;x-amz-target
+4174ae5a6684013ccd7fbc82ec646cc008c782db3a65bee2aaebea24dca4a892
+15:10:36.678 [main] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 Canonical Request Hash: c12d304c3cd769b746e3cbf08744ad9367e1321dfce9800d65a9c2218546a500
+15:10:36.678 [main] DEBUG software.amazon.awssdk.http.auth.aws.internal.signer.DefaultV4RequestSigner - AWS4 String to sign: AWS4-HMAC-SHA256
+20241022T191036Z
+20241022/us-east-1/timestream/aws4_request
+c12d304c3cd769b746e3cbf08744ad9367e1321dfce9800d65a9c2218546a500
+15:10:36.739 [main] DEBUG software.amazon.awssdk.http.apache.internal.conn.SdkTlsSocketFactory - socket.getSupportedProtocols(): [TLSv1.3, TLSv1.2, TLSv1.1, TLSv1, SSLv3, SSLv2Hello], socket.getEnabledProtocols(): [TLSv1.3, TLSv1.2]
+15:10:36.756 [main] DEBUG software.amazon.awssdk.http.apache.internal.net.SdkSslSocket - created: query-cell2.timestream.us-east-1.amazonaws.com/54.235.67.28:443
+15:10:37.525 [main] DEBUG software.amazon.awssdk.requestId - Received successful response: 200, Request ID: FZHJLKX452OEBZANZTQMVEU3VM, Extended Request ID: not available
+15:10:37.525 [main] DEBUG software.amazon.awssdk.request - Received successful response: 200, Request ID: FZHJLKX452OEBZANZTQMVEU3VM, Extended Request ID: not available
+15:10:37.553 [main] DEBUG software.amazon.awssdk.retries.LegacyRetryStrategy - Request attempt 1 succeeded (cost: -1, capacity: 500/500)
+Row: Row(Data=[Datum(ScalarValue=host_xyz), Datum(ScalarValue=zone_xyz), Datum(ScalarValue=region_xyz), Datum(ScalarValue=cpu_utilization), Datum(ScalarValue=2024-10-22 19:03:59.005000000), Datum(ScalarValue=13.5)])
